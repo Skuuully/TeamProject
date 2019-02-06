@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour {
 
     public float playerSpeed;
     public float jumpHeight;
     float horizontalMove;
-    float verticalMove;
+    public float verticalSpeed;
     bool jump;
     Vector2 velocity;
     public Rigidbody2D rb2d;
@@ -16,26 +17,23 @@ public class PlayerMovement : MonoBehaviour {
     void Start()
     {
         horizontalMove = 0;
-        verticalMove = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(!Input.GetButton("Jump"))
+        // if left shift or rmb is pressed level will restart
+        if(Input.GetButtonDown("Fire3"))
         {
-            verticalMove = 0;
-        }
-        else
-        {
-            verticalMove = jumpHeight;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         horizontalMove = Input.GetAxis("Horizontal");
     }
 
     void FixedUpdate()
     {
-        velocity.Set(horizontalMove * playerSpeed * Time.deltaTime, verticalMove * Time.deltaTime);
+        velocity.Set(horizontalMove * playerSpeed * Time.deltaTime, verticalSpeed * Time.deltaTime);
         rb2d.velocity = (velocity);
     }
+
 }
