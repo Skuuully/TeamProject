@@ -21,10 +21,12 @@ public class Restart : MonoBehaviour {
             RestartCurrentLevel();
         }
 
-
-        //should cause platform to follow upwards... but doesnt
-        Vector3 killMove = new Vector3(0, cam.riseSpeed, 0);
-        transform.position += killMove;
+        // only the kill floor object will rise or anything tagged as kill floor
+        if(gameObject.tag == "KillFloor")
+        {
+            Vector3 killMove = new Vector3(0, cam.riseSpeed, 0);
+            transform.position += killMove;
+        }
     }
 
     public void OnCollisionEnter2D(Collision2D col)
