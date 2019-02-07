@@ -25,15 +25,41 @@ public class PlayerMovement : MonoBehaviour {
         // if left shift or rmb is pressed level will restart
         if(Input.GetButtonDown("Fire3"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Restart();
         }
+
+        //allows horizontal movement
         horizontalMove = Input.GetAxis("Horizontal");
+
+        // Pritters to do:
+        // Add much better movement controls
     }
 
     void FixedUpdate()
     {
+        // vertical speed is what causes player to move upwards with camera
         velocity.Set(horizontalMove * playerSpeed * Time.deltaTime, verticalSpeed * Time.deltaTime);
         rb2d.velocity = (velocity);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("SpeedUp"))
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
+
+    public void IncreaseSpeed(float increase)
+    {
+        //used so powerup blocks can increase the players speed
+        playerSpeed += increase;
+    }
+
+    public void Restart()
+    {
+        // restarts the current scene
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 }
