@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour {
     public float playerSpeed;
     public float jumpHeight;
     float horizontalMove;
-    public float verticalSpeed;
+    public float steadyRise;
     bool jump;
     Vector2 velocity;
     public Rigidbody2D rb2d;
@@ -37,8 +37,8 @@ public class PlayerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
-        // vertical speed is what causes player to move upwards with camera
-        velocity.Set(horizontalMove * playerSpeed * Time.deltaTime, verticalSpeed * Time.deltaTime);
+        // steady rise is what causes player to move upwards with camera
+        velocity.Set(horizontalMove * playerSpeed * Time.deltaTime, steadyRise * Time.deltaTime);
         rb2d.velocity = (velocity);
     }
 
@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour {
     public void IncreaseSpeed(float increase)
     {
         //used so powerup blocks can increase the players speed
-        playerSpeed += increase;
+        steadyRise += increase;
     }
 
     public void Restart()

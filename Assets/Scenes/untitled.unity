@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee99e65e612c67340b5d807d0d636c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedIncrease: 100
+  speedIncrease: 5
   playerMovement: {fileID: 1812891914}
 --- !u!61 &1552346945
 BoxCollider2D:
@@ -717,9 +717,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 503419d46f383e94f880eb7f945126ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 1000000
+  playerSpeed: 20
   jumpHeight: 750
-  verticalSpeed: 150
+  steadyRise: 150
   rb2d: {fileID: 1812891916}
 --- !u!61 &1812891915
 BoxCollider2D:

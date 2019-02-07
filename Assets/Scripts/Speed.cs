@@ -18,14 +18,14 @@ public class Speed : MonoBehaviour {
     }
 
     //when a collision happens
-    void OnCollisionEnter2D(Collision2D col)
+    public void OnCollisionEnter2D(Collision2D col)
     {
         // if collides with player
         if (col.gameObject.tag == "Player")
         {
             //increase the players speed by whatever the float is set to.
             playerMovement.IncreaseSpeed(speedIncrease);
-            Destroy(transform);
+            Destroy(gameObject);
         }
 
     }
