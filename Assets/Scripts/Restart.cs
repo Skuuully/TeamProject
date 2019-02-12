@@ -22,9 +22,9 @@ public class Restart : MonoBehaviour {
         }
 
         // only the kill floor object will rise or anything tagged as kill floor
-        if(gameObject.tag == "KillFloor")
+        if(gameObject.tag == "Respawn")
         {
-            Vector3 killMove = new Vector3(0, cam.riseSpeed, 0);
+            Vector3 killMove = new Vector3(0, cam.trueRise, 0);
             transform.position += killMove;
         }
     }
