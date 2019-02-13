@@ -20,6 +20,11 @@ public class Restart : MonoBehaviour {
         {
             RestartCurrentLevel();
         }
+        // escape returns to title
+        else if (Input.GetKey(KeyCode.Escape))
+        {
+            BackToTitle();
+        }
 
         // only the kill floor object will rise or anything tagged as kill floor
         if(gameObject.tag == "Respawn")
@@ -40,5 +45,10 @@ public class Restart : MonoBehaviour {
     public void RestartCurrentLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void BackToTitle()
+    {
+        SceneManager.LoadScene("Main");
     }
 }

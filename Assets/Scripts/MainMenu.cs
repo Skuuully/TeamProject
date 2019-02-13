@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour {
     public bool isLevels;
     public bool isInfinite;
     public bool isSettings;
+    public bool isLevel1;
 
 
 	// Use this for initialization
@@ -38,6 +39,10 @@ public class MainMenu : MonoBehaviour {
         else if(isInfinite)
         {
 
+        }
+        else if(isLevel1)
+        {
+            SceneManager.LoadScene("Level1");
         }
     }
 }
