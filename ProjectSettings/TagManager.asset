@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Surface
   - SpeedUp
+  - Right Wall
+  - Left Wall
   layers:
   - Default
   - TransparentFX

@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 424439247}
   m_Layer: 9
   m_Name: left wall
-  m_TagString: Surface
+  m_TagString: Left Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -350,7 +350,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0011438131, y: 0.00058335066}
+  m_Offset: {x: 0.0011438131, y: -0.00043225288}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -361,7 +361,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.99822426, y: 0.9985663}
+  m_Size: {x: 0.99822426, y: 1.0005975}
   m_EdgeRadius: 0
 --- !u!212 &424439248
 SpriteRenderer:
@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 1231229950}
   m_Layer: 9
   m_Name: right wall
-  m_TagString: Surface
+  m_TagString: Right Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -786,7 +786,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0011438131, y: 0.0005827993}
+  m_Offset: {x: 0.0011438131, y: 0.0015654266}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -797,7 +797,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.99822426, y: 0.9962143}
+  m_Size: {x: 0.99822426, y: 0.9981795}
   m_EdgeRadius: 0
 --- !u!212 &1231229951
 SpriteRenderer:
@@ -1059,6 +1059,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 20
   jumpHeight: 750
+  playerCollider: {fileID: 0}
+  rightWallCollider: {fileID: 0}
+  leftWallCollider: {fileID: 0}
   steadyRise: 150
   rb2d: {fileID: 1812891916}
 --- !u!61 &1812891915
