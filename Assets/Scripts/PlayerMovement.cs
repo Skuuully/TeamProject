@@ -17,10 +17,12 @@ public class PlayerMovement : MonoBehaviour
     private bool facingRight;
     Vector2 velocity;
     public Rigidbody2D rb2d;
+    private List<Vector2> velocities;
 
     // Use this for initialization
     void Start()
     {
+        velocities = new List<Vector2>();
         horizontalMove = 0;
         jump = false;
         facingRight = true;
@@ -44,17 +46,18 @@ public class PlayerMovement : MonoBehaviour
 
         // Pritters to do:
         // Add much better movement controls
-        if (Input.GetButtonDown("Jump"))
-        {
-            Jump();
-        }
+        
     }
 
     void FixedUpdate()
     {
         // steady rise is what causes player to move upwards with camera
-        velocity.Set(horizontalMove * playerSpeed * Time.deltaTime, steadyRise * Time.deltaTime);
-        rb2d.velocity = (velocity);
+        CalculatePlayerRise();
+        if (Input.GetButtonDown("Jump"))
+        {
+            Jump();
+        }
+        CalculateFinalVelocity();
     }
 
     void OnTriggerEnter(Collider other)
@@ -87,7 +90,12 @@ public class PlayerMovement : MonoBehaviour
                 jump = true;
                 for (int i = 0; i < 9; i++)
                 {
-                    transform.Translate(-1, 0, 1f * Time.deltaTime, Space.World);
+                   // GetComponent<Rigidbody2D>().AddForce(transform.TransformDirection(Vector3.left) * 250);
+                    //transform.Translate(-1f, 0, 1f * Time.deltaTime, Space.World);
+                    // CalculateVelocity(-9f * Time.deltaTime, 0f);
+                    Vector2 v = new Vector2(-1, 0);
+                    velocities.Add(v);
+
                 }
                 jump = false;
                 FlipPlayer();
@@ -97,7 +105,10 @@ public class PlayerMovement : MonoBehaviour
                 jump = true;
                 for (int i = 0; i < 9; i++)
                 {
-                    transform.Translate(1, 0, 1f * Time.deltaTime, Space.World);
+                    //CalculateVelocity(1f *Time.deltaTime, 0);
+                    Vector2 v = new Vector2(1, 0);
+                    velocities.Add(v);
+                    //transform.Translate(1f, 0, 1f * Time.deltaTime, Space.World);
                 }
                 jump = false;
                 FlipPlayer();
@@ -118,6 +129,27 @@ public class PlayerMovement : MonoBehaviour
             transform.localScale += new Vector3(1, 0, 0);
             facingRight = true;
         }
+    }
+
+    //calculates the rise of the player
+    void CalculatePlayerRise()
+    {
+        float y = steadyRise * Time.deltaTime;
+        Vector2 upwards = new Vector2(0, y);
+        velocities.Add(upwards);
+    }
+
+    // call anytime the velocity wants to be changed
+    void CalculateFinalVelocity()
+    {
+        Vector2 v = new Vector2();
+        for (int i = 0; i < velocities.Count; i++)
+        {
+            v += velocities[i];
+        }
+        rb2d.velocity = v;
+        transform.Translate(v);
+        velocities.Clear();
     }
 }
 

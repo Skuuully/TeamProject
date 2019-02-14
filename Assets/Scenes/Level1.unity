@@ -885,7 +885,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee99e65e612c67340b5d807d0d636c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedIncrease: 5
+  speedIncrease: -3
   playerMovement: {fileID: 1812891914}
 --- !u!61 &1552346945
 BoxCollider2D:
@@ -1062,7 +1062,7 @@ MonoBehaviour:
   playerCollider: {fileID: 0}
   rightWallCollider: {fileID: 0}
   leftWallCollider: {fileID: 0}
-  steadyRise: 150
+  steadyRise: 2
   rb2d: {fileID: 1812891916}
 --- !u!61 &1812891915
 BoxCollider2D:
@@ -1155,7 +1155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee99e65e612c67340b5d807d0d636c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedIncrease: 5
+  speedIncrease: 0.1
   playerMovement: {fileID: 1812891914}
 --- !u!61 &2043142610
 BoxCollider2D:
@@ -1268,7 +1268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee99e65e612c67340b5d807d0d636c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedIncrease: 5
+  speedIncrease: 0.1
   playerMovement: {fileID: 1812891914}
 --- !u!61 &2103899630
 BoxCollider2D:
