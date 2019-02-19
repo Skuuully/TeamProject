@@ -3,46 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour {
-
-    public bool isQuit;
-    public bool isLevels;
-    public bool isInfinite;
-    public bool isSettings;
-    public bool isLevel1;
-
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    void OnMouseUp()
+public class MainMenu : MonoBehaviour
+{
+    public void Level()
     {
-        if(isLevels)
-        {
-            SceneManager.LoadScene("Levels");
-        }
-        else if(isQuit)
-        {
-            Application.Quit();
-        }
-        else if(isSettings)
-        {
+        SceneManager.LoadScene("Level1");
+    }
 
-        }
-        else if(isInfinite)
-        {
-
-        }
-        else if(isLevel1)
-        {
-            SceneManager.LoadScene("Level1");
-        }
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
