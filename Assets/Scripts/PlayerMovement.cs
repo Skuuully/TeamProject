@@ -40,12 +40,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Restart();
         }
-
-        //allows horizontal movement
-        horizontalMove = Input.GetAxis("Horizontal");
-
-        // Pritters to do:
-        // Add much better movement controls
         
     }
 
@@ -55,8 +49,9 @@ public class PlayerMovement : MonoBehaviour
         CalculatePlayerRise();
         if (Input.GetButtonDown("Jump"))
         {
-            Jump();
+            StartJump();
         }
+        ContinueJump();
         CalculateFinalVelocity();
     }
 
@@ -81,37 +76,50 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Makes the player jump to the opposite wall 
-    void Jump()
+    void StartJump()
     {
         if (jump == false)
         {
             if (playerCollider.IsTouching(rightWallCollider))
             {
                 jump = true;
-                for (int i = 0; i < 9; i++)
-                {
-                   // GetComponent<Rigidbody2D>().AddForce(transform.TransformDirection(Vector3.left) * 250);
-                    //transform.Translate(-1f, 0, 1f * Time.deltaTime, Space.World);
-                    // CalculateVelocity(-9f * Time.deltaTime, 0f);
-                    Vector2 v = new Vector2(-1, 0);
-                    velocities.Add(v);
-
-                }
-                jump = false;
-                FlipPlayer();
+                Vector2 v = new Vector2(-1, 0);
+                velocities.Add(v);
             }
             else if (playerCollider.IsTouching(leftWallCollider))
             {
                 jump = true;
-                for (int i = 0; i < 9; i++)
+                Vector2 v = new Vector2(1, 0);
+                velocities.Add(v);
+            }
+        }
+    }
+
+    void ContinueJump()
+    {
+        if(jump == true)
+        {
+            if(!facingRight)
+            {
+                Vector2 v = new Vector2(0.5f, 0);
+                velocities.Add(v);
+                Debug.Log("move right");
+                if (playerCollider.IsTouching(rightWallCollider))
                 {
-                    //CalculateVelocity(1f *Time.deltaTime, 0);
-                    Vector2 v = new Vector2(1, 0);
-                    velocities.Add(v);
-                    //transform.Translate(1f, 0, 1f * Time.deltaTime, Space.World);
+                    jump = false;
+                    FlipPlayer();
                 }
-                jump = false;
-                FlipPlayer();
+            }
+            else
+            {
+                Vector2 v = new Vector2(-0.5f, 0);
+                velocities.Add(v);
+                Debug.Log("move left");
+                if (playerCollider.IsTouching(leftWallCollider))
+                {
+                    jump = false;
+                    FlipPlayer();
+                }
             }
         }
     }

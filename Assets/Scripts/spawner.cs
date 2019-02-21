@@ -30,9 +30,16 @@ public class spawner : MonoBehaviour
 
     void Spawn()
     {
-        if(gameObject.name == "left spawner")
+        
+        Quaternion quaternion = new Quaternion(Quaternion.identity.x, Quaternion.identity.y, Quaternion.identity.z, Quaternion.identity.w);
+        //quaternion = Quaternion.Inverse(quaternion);
+        if(gameObject.name == "Left Spawner")
         {
-            Instantiate(leftWall);
+            Instantiate(leftWall, new Vector3(-6.5f, 6.5f, 0.0f), leftWall.rotation);
+        }
+        if(gameObject.name == "Right Spawner")
+        {
+            Instantiate(rightWall, new Vector3(7.5f, 6.5f, 0.0f), rightWall.rotation);
         }
         
     }

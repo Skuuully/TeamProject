@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Delete.cs" />
+     <Compile Include="Assets\Scripts\Fall.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\Scripts\MouseHover.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
