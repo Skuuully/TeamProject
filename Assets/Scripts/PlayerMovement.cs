@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public BoxCollider2D playerCollider;
     public BoxCollider2D rightWallCollider;
     public BoxCollider2D leftWallCollider;
-    float horizontalMove;
     public float steadyRise;
     private bool jump;
     private bool facingRight;
@@ -19,17 +19,22 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb2d;
     private List<Vector2> velocities;
 
+    public Text scoreTextBox;
+    public int score;
+
     // Use this for initialization
     void Start()
     {
         velocities = new List<Vector2>();
-        horizontalMove = 0;
         jump = false;
         facingRight = true;
 
         playerCollider = GameObject.FindGameObjectWithTag("Player").GetComponent<BoxCollider2D>();
         rightWallCollider = GameObject.FindGameObjectWithTag("Right Wall").GetComponent<BoxCollider2D>();
         leftWallCollider = GameObject.FindGameObjectWithTag("Left Wall").GetComponent<BoxCollider2D>();
+
+        score = 0;
+        //scoreTextBox = GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -40,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Restart();
         }
+
+        scoreTextBox.GetComponent<Text>().text = "Score: " + score.ToString();
         
     }
 
@@ -67,6 +74,11 @@ public class PlayerMovement : MonoBehaviour
     {
         //used so powerup blocks can increase the players speed
         steadyRise += increase;
+    }
+
+    public void IncreaseScore(int increase)
+    {
+        score += increase;
     }
 
     public void Restart()

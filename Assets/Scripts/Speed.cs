@@ -5,6 +5,7 @@ using UnityEngine;
 public class Speed : MonoBehaviour {
 
     public float speedIncrease;
+    public int scoreIncrease;
     public PlayerMovement playerMovement;
 
 	// Use this for initialization
@@ -23,8 +24,15 @@ public class Speed : MonoBehaviour {
         // if collides with player
         if (col.gameObject.tag == "Player")
         {
-            //increase the players speed by whatever the float is set to.
-            playerMovement.IncreaseSpeed(speedIncrease);
+            if(tag == "SpeedUp")
+            {
+                //increase the players speed by whatever the float is set to.
+                playerMovement.IncreaseSpeed(speedIncrease);
+            }
+            else if(tag == "ScoreUp")
+            {
+                playerMovement.IncreaseScore(scoreIncrease);
+            }
             Destroy(gameObject);
         }
 

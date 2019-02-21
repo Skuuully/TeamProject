@@ -8,6 +8,7 @@ TagManager:
   - SpeedUp
   - Right Wall
   - Left Wall
+  - ScoreUp
   layers:
   - Default
   - TransparentFX
