@@ -34,12 +34,19 @@ public class PlayerMovement : MonoBehaviour
         leftWallCollider = GameObject.FindGameObjectWithTag("Left Wall").GetComponent<BoxCollider2D>();
 
         score = 0;
-        //scoreTextBox = GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetButtonUp("Jump"))
+        {
+            Debug.Log("Jump started");
+            StartJump();
+        }
+        ContinueJump();
+        // steady rise is what causes player to move upwards with camera
+        CalculatePlayerRise();
         // if left shift or rmb is pressed level will restart
         if (Input.GetButtonDown("Fire3"))
         {
@@ -47,19 +54,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         scoreTextBox.GetComponent<Text>().text = "Score: " + score.ToString();
-        
+
+
+        CalculateFinalVelocity();
     }
 
     void FixedUpdate()
     {
-        // steady rise is what causes player to move upwards with camera
-        CalculatePlayerRise();
-        if (Input.GetButtonDown("Jump"))
-        {
-            StartJump();
-        }
-        ContinueJump();
-        CalculateFinalVelocity();
+
     }
 
     void OnTriggerEnter(Collider other)

@@ -19,7 +19,7 @@ public class Speed : MonoBehaviour {
     }
 
     //when a collision happens
-    public void OnCollisionEnter2D(Collision2D col)
+    public void OnTriggerEnter2D(Collider2D col)
     {
         // if collides with player
         if (col.gameObject.tag == "Player")
