@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 velocity;
     public Rigidbody2D rb2d;
     private List<Vector2> velocities;
+    public Animator animator;
 
     public Text scoreTextBox;
     public int score;
@@ -94,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (jump == false)
         {
+            animator.SetBool("Jump", true);
             if (playerCollider.IsTouching(rightWallCollider))
             {
                 jump = true;
@@ -121,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
                 if (playerCollider.IsTouching(rightWallCollider))
                 {
                     jump = false;
+                    animator.SetBool("Jump", false);
                     FlipPlayer();
                 }
             }
@@ -132,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
                 if (playerCollider.IsTouching(leftWallCollider))
                 {
                     jump = false;
+                    animator.SetBool("Jump", false);
                     FlipPlayer();
                 }
             }

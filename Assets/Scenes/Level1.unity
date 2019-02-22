@@ -1625,6 +1625,7 @@ MonoBehaviour:
   leftWallCollider: {fileID: 0}
   steadyRise: 2
   rb2d: {fileID: 1812891916}
+  animator: {fileID: 1812891917}
   scoreTextBox: {fileID: 90920267}
   score: 0
 --- !u!61 &1812891915
